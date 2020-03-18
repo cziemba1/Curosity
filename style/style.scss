@@ -1,0 +1,1563 @@
+/*General styling*/
+
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, address, big, em, img, s, small, strike, strong, var, b, u, i, center, dl, dt, dd, ol, ul, li, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    list-style-type: none;
+    text-decoration: none;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 2rem;
+}
+$lg-color: #332e54;
+$lg-color-darker: #B2A9EC;
+
+//Mixins
+
+@mixin flexCol {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin button{
+    cursor: pointer;
+    z-index: 200;
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: 400;
+    border: 1px solid $lg-color;
+    width: 15rem;
+    padding: 1rem 2rem;
+    text-align: center;
+    transition: all .3s ease-in-out;
+}
+
+@mixin contact{
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    line-height: 4rem;
+    color: $lg-color;;
+}
+
+@mixin FlexColCenter{
+    justify-content: center;
+    align-items: center;
+}
+
+//Calc for responsive font
+@function px2vw($value-px, $layout-px) {
+    @return ($value-px/$layout-px)*100vw;
+}
+
+$root-font-size: 16px;
+
+html {
+    font-size: px2vw($root-font-size, 1200px);
+} 
+
+@function px2rem($value-px) {
+	@return ($value-px/$root-font-size)*1rem;
+} //return pixel to rems
+
+body{
+    overflow-x: hidden;
+}
+
+//Original FullPage.js style override
+#fp-nav{
+    margin-left: 92%;
+
+    ul li a{
+        color: $lg-color;
+        .fp-sr-only{
+            display: none;
+        }
+
+        span{
+            background-color: $lg-color-darker;
+
+        }
+    }
+    
+}
+/*------------Content styling------------*/
+/*Landing Page*/
+.fullpage__intro{
+    justify-content: flex-start;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: -1rem;
+    padding: 5rem;
+    z-index: 200;
+    .nav-container{
+        display: none;
+    }
+
+    .logo a{
+        font-size: 2rem;
+        font-weight: 700;
+        color: $lg-color;
+        position: fixed;
+    }
+    
+}
+
+.section1{
+    @include flexCol;
+    justify-content: flex-start;
+    padding: 7rem;
+
+    .title-main{
+        @include flexCol;
+        position: relative;
+        top: -5%;
+
+        h1{
+            color: $lg-color;
+            font-size: 3rem;
+            letter-spacing: .5rem;
+        }
+
+        h2{
+            color: $lg-color;
+            font-weight: 300;
+            font-size: 2.2rem;
+            margin: 1rem 0 0 29rem;
+        }
+
+        p{
+            color: $lg-color;
+            font-size: 2.3rem;
+            margin-top: 8rem;
+            padding-right: 2rem;
+            width: 35rem;
+        }
+
+        a{
+            margin-top: 9rem;
+            color: $lg-color-darker;
+            background-color: $lg-color;
+            @include button;
+
+            &:hover{
+                color: $lg-color;
+                background-color: #ffffff;
+            }
+        }
+    }
+
+    #scene{
+        width: 100vw;
+        height: 40rem;
+        position: absolute;
+
+        img{
+            width: 20%;
+            margin-top: -12rem;
+            margin-left: 25%;
+            position: absolute;
+        }
+
+        img:nth-of-type(1){
+            margin-left: 32%;
+        }
+        img:nth-of-type(2){
+            margin-left: 45%;
+        }
+        img:nth-of-type(3){
+            margin-left: 56%;
+        }
+        img:nth-of-type(4){
+            margin-top: 18rem;
+            width: 65%;
+            z-index: -10;
+            margin-left: 22%;
+        }
+    }
+}
+
+.section{
+    @include flexCol;
+    padding: 7rem;
+
+    .flavor-section{
+        @include flexCol;
+        position: relative;
+        top: -29%;
+
+        h1{
+            font-size: 4rem;
+            color: white;
+            font-weight: 400;
+            width: 80%;
+        }
+
+        .calories{
+            display: flex;
+            margin: 2rem;
+
+            p{
+                font-size: 2rem;
+                color: white;
+                margin-left: .5rem;
+                font-weight: 300;
+                width: 35rem;
+            }
+        }
+
+        .img{
+            display: flex;
+
+            img{
+                width: 40%;
+                object-fit: cover;
+                position: absolute;
+                filter: brightness(.9);
+            }
+
+            .right{
+                left: 50%;
+                top: 27rem;
+            }
+
+            .left{
+                left: 40%;
+                top: 25.5rem;
+                z-index: 0;
+            }
+
+            .explore{
+                position: absolute;
+                top: 90.5rem;
+                left: 63%;
+                color: $lg-color;
+                background-color: white;
+                @include button;
+
+                &:hover{
+                    color: white;
+                    background-color: $lg-color-darker;
+                }
+            }
+        }
+
+        .item-info-flavor{
+            @include flexCol;
+            position: absolute;
+            top: 80rem;
+            margin: 2rem;
+
+            li{
+                font-size: 2rem;
+                color: white;
+                margin-top: 1rem;
+            }
+        }
+    }
+}
+
+#title_2,
+#calories_2,
+#item_info li{
+    color: $lg-color;
+}
+
+#img_2 img{
+    width: 80%;
+    top: 29rem;
+    left: 25%;
+}
+
+#img_3 {
+    img{
+        width: 65%;
+        top: 35rem;
+        left: 25%;
+    }
+
+    .right{
+        z-index: 20;
+    }
+
+    .left{
+        z-index: 1;
+    }
+}
+
+
+
+.footer{
+    @include flexCol;
+    background-color: $lg-color-darker;
+    position: relative;
+    height: 90vh;
+
+    .contact{
+        @include flexCol;
+        padding: 4rem 2rem;
+        margin-top: 10rem;
+        color: $lg-color;
+        position: relative;
+
+        h1{
+            font-size: 5rem;
+            margin: 4rem 0;
+            z-index: 10;
+        }
+
+        .info-contact{
+            @include flexCol;
+            z-index: 10;
+
+            p{
+                @include contact;
+            }
+
+            a{
+                @include contact;
+            }
+        }
+
+        img{
+            position: absolute;
+            width: 45%;
+            z-index: 0;
+            left: 40%;
+            top: 20rem;
+        }
+    }
+    .copyright{
+        margin-top: 10rem;
+        padding: 0 2rem;
+        font-size: 2rem;
+        color: white;
+    }
+}
+/*Items Page*/
+
+.product{
+    @include flexCol;
+    position: relative;
+    align-items: center;
+    width: 100vw;
+
+    .product-landing{
+        @include flexCol;
+        @include FlexColCenter;
+        height: 80vh;
+        img{
+            width: 40%;
+            margin-bottom: 2rem;
+        }
+        p{
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: $lg-color;
+            position: relative;
+        }
+        ul{
+            @include flexCol;
+            @include FlexColCenter;
+            li{
+                font-weight: 300;
+                line-height: 2.5rem;
+            }
+        }
+    }
+
+    .product-info{
+        @include flexCol;
+        padding: 7rem;
+
+        p{
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            line-height: 3rem;
+            text-align: justify;
+            color: $lg-color;
+        }
+    }
+    .product-ingridients{
+        @include flexCol;
+        padding: 0 4rem 3rem 3rem;
+
+        h1{
+            font-size: 2rem;
+            text-transform: uppercase;
+            margin: 1rem 0 .5rem 1rem;
+            color: $lg-color;
+        }
+
+        p{
+            font-weight: 300;
+            color: $lg-color;
+            font-size: 1.8rem;
+        }
+
+        ul{
+            @include flexCol;
+            margin: 1rem 0 4rem 4rem;
+            li{
+                font-size: 1.5rem;
+            }
+        }
+    }
+    .product-social{
+        margin-top: 4rem;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 80%;
+
+        a{
+            color: $lg-color;
+            border: 1px solid $lg-color;
+            padding: 1rem;
+
+            ion-icon{
+                margin-right: 1rem;
+            }
+
+            .facebook{
+                color: blue;
+            }
+
+            .instagram{
+                color: rgb(194, 6, 109);
+            }
+
+            .pinterest{
+                color: red;
+            }
+        }
+
+    }
+}
+
+.next-products{
+    @include flexCol;
+    padding: 2rem;
+    margin-top: 4rem;
+    height: 70vh;
+
+    p{
+        text-align: center;
+        font-size: 2.5rem;
+        text-transform: uppercase;
+        margin-bottom: 5rem;
+    }
+
+    .next-items{
+        display: flex;
+        justify-content: space-between;
+        padding: 3rem;
+            
+        a{
+            div{
+                @include flexCol;
+                align-items: center;
+                filter: brightness(.7);
+
+                img{
+                    width: 50%;
+                }
+                p{
+                    font-size: 1.5rem;
+                    margin-top: 2.5rem;
+                    color: $lg-color;
+                }
+
+                &:hover{
+                    filter: brightness(1);
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 600px){
+/*Landing Page*/
+    .navbar{
+        top: 0rem;
+        padding: 2rem;
+        z-index: 200;
+        width: 100%;
+
+        .nav-container{
+            display: flex;
+            
+            li a{
+                margin: 0 1rem;
+                color: $lg-color;
+                transition: all .3s ease-in;
+                font-size: 1.5rem;
+
+                &:hover{
+                    color: $lg-color-darker;
+                }
+            }
+        }
+
+        .logo a{
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: $lg-color;
+            position: fixed;
+        }
+    }
+    .section1{
+        .title-main{
+            p{
+                font-size: 1.8rem;
+            }
+
+            a{
+                font-size: 1.5rem;
+            }
+        }
+    }
+    .section{
+
+        .flavor-section{
+            top: -30%;
+
+            h1{
+                font-size: 3rem;
+            }
+
+            .calories{
+                p{
+                    font-size: 1.5rem;
+                }
+            }
+            .img{
+
+                img{
+                    width: 35%;
+                }
+
+                .right{
+                    left: 60%;
+                    top: 17rem;
+                }
+
+                .left{
+                    left: 50%;
+                    top: 16rem;
+                }
+
+                .explore{
+                    top: 69rem;
+                    left: 69%;
+                    font-size: 1.5rem;
+                }
+            }
+            .item-info-flavor{
+                top: 60rem;
+                margin: 2rem;
+
+                li{
+                    font-size: 1.5rem;
+                    color: white;
+                    margin-top: 1rem;
+                }
+            }
+        }
+    }
+    #img_2 img{
+        width: 80%;
+        top: 15rem;
+        left: 25%;
+    }
+
+    #img_3 {
+        img{
+            width: 55%;
+            top: 24rem;
+            left: 38%;
+        }
+
+        .right{
+            z-index: 20;
+        }
+
+        .left{
+            z-index: 1;
+        }
+    }
+
+    .footer{
+
+        .contact{
+            padding: 4rem 2rem;
+            margin-top: 8rem;
+
+            h1{
+                font-size: 2.8rem;
+                margin: 3rem 0;
+            }
+
+            .info-contact{
+
+                p{
+                    font-size: 2.3rem;
+                    margin-bottom: 2rem;
+                    line-height: 3rem;
+                }
+
+                a{
+                    font-size: 2.3rem;
+                    margin-bottom: 1.5rem;
+                    line-height: 3rem;
+                }
+            }
+            img{
+                width: 45%;
+                z-index: 0;
+                left: 45%;
+                top: 13rem;
+            }
+        }
+        .copyright{
+            font-size: 1.5rem;
+        }
+    }
+    /*Items Page*/
+    .product{
+
+        .product-landing{
+            margin-top: 4rem;
+            img{
+                width: 40%;
+                margin-bottom: 2rem;
+            }
+            p{
+                font-size: 2rem;
+            }
+            ul{
+                li{
+                    line-height: 2.5rem;
+                    font-size: 1.5rem;
+                }
+            }
+        }
+
+        .product-info{
+            padding: 7rem 10rem;
+
+            p{
+                font-size: 1.5rem;
+            }
+        }
+        .product-ingridients{
+            padding: 0 5rem 3rem 5rem;
+
+            h1{
+                font-size: 1.5rem;
+            }
+
+            p{
+                font-size: 1.3rem;
+            }
+
+            ul{
+                li{
+                    font-size: 1.2rem;
+                }
+            }
+        }
+        .product-social{
+            width: 90%;
+
+            a{
+                padding: 1rem;
+                font-size: 1.5rem;
+            }
+
+        }
+    }
+
+    .next-products{
+        p{
+            font-size: 2rem;
+        }
+
+        .next-items{
+                
+            a{
+                div{
+
+                    img{
+                        width: 40%;
+                    }
+                    p{
+                        font-size: 1.5rem;
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (min-width: 800px){
+/*Landing Page*/
+    .navbar{
+        padding: 2rem;
+
+        .nav-container{
+            display: flex;
+            
+            li a{
+                font-size: 1.5rem;
+            }
+        }
+
+        .logo a{
+            font-size: 1.5rem;
+        }
+    }
+
+    .section1{
+        padding: 7rem;
+
+        .title-main{
+            top: -5%;
+
+            h1{
+                font-size: 3rem;
+            }
+
+            h2{
+                font-size: 1.5rem;
+                margin-top: -.5rem;
+            }
+
+            p{
+                font-size: 1.5rem;
+                padding-right: .1rem;
+                left: 0%;
+                top: 2rem;
+                width: 45%;
+                position: relative;
+            }
+
+            a{
+                margin-top: 35rem;
+                font-size: 1.5rem;
+                position: absolute;
+                width: 12rem;
+            }
+        }
+
+        #scene{
+
+            img{
+                width: 12%;
+                margin-top: -10rem;
+            }
+
+            img:nth-of-type(1){
+                margin-left: 45%;
+            }
+            img:nth-of-type(2){
+                margin-left: 53%;
+            }
+            img:nth-of-type(3){
+                margin-left: 60%;
+            }
+            img:nth-of-type(4){
+                margin-top: 7.5rem;
+                width: 45%;
+                margin-left: 37%;
+            }
+        }
+    }
+
+    .section{
+
+        .flavor-section{
+                top: -20%;
+
+                h1{
+                    font-size: 2.7rem;
+                }
+
+                .calories{
+                    p{
+                        font-size: 1.4rem;
+                    }
+                }
+                .img{
+
+                    img{
+                        width: 35%;
+                    }
+
+                    .right{
+                        left: 60%;
+                        top: 10rem;
+                    }
+
+                    .left{
+                        left: 50%;
+                        top: 9rem;
+                    }
+
+                    .explore{
+                        top: 38rem;
+                        left: 10%;
+                        font-size: 1.2rem;
+                        width: 12rem;
+                    }
+                }
+                .item-info-flavor{
+                    top: 20rem;
+                    margin-left: 2.2rem;
+
+                    li{
+                        font-size: 1.2rem;
+                    }
+                }
+            }
+        }
+        #img_2 img{
+            width: 75%;
+            top: 10rem;
+            left: 27%;
+        }
+
+        #img_3 {
+            img{
+                width: 45%;
+                top: 22rem;
+                left: 47%;
+            }
+
+            .right{
+                z-index: 20;
+            }
+
+            .left{
+                z-index: 1;
+            }
+        }
+
+    .footer{
+
+        .contact{
+            padding: 4rem 2rem;
+            margin-top: -2rem;
+
+            h1{
+                font-size: 2.2rem;
+                margin: 3rem 0;
+            }
+
+            .info-contact{
+
+                p{
+                    font-size: 1.3rem;
+                    line-height: 2rem;
+                }
+
+                a{
+                    font-size: 1.3rem;
+                    line-height: 2rem;
+                }
+            }
+            img{
+                width: 40%;
+                left: 45%;
+                top: 6rem;
+            }
+        }
+        .copyright{
+            font-size: 1rem;
+        }
+    }
+    /*Items Page*/
+    .product{
+        
+        .product-landing{
+            flex-direction: row;
+            margin-top: 6rem;
+            img{
+                width: 30%;
+                margin-bottom: 2rem;
+            }
+            p{
+                font-size: 2rem;
+            }
+            ul{
+                position: relative;
+                top: 12rem;
+                left: -18rem;
+                align-items: flex-start;
+                li{
+                    line-height: 2.5rem;
+                    font-size: 1.5rem;
+                }
+            }
+        }
+
+        .product-info{
+            padding: 7rem 10rem;
+
+            p{
+                font-size: 1.2rem;
+            }
+        }
+        .product-ingridients{
+            padding: 0 5rem 3rem 5rem;
+
+            h1{
+                font-size: 1.5rem;
+            }
+
+            p{
+                font-size: 1.1rem;
+            }
+
+            ul{
+                li{
+                    font-size: 1rem;
+                }
+            }
+        }
+        .product-social{
+            width: 90%;
+
+            a{
+                padding: 1rem;
+                font-size: 1.1rem;
+            }
+
+        }
+    }
+
+    .next-products{
+        p{
+            font-size: 1.5rem;
+        }
+
+        .next-items{
+                
+            a{
+                div{
+
+                    img{
+                        width: 30%;
+                    }
+                    p{
+                        font-size: 1.2rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1000px){
+/*Landing Page*/
+    .navbar{
+        padding: 1rem;
+
+        .nav-container{
+            
+            li a{
+                font-size: 1.2rem;
+            }
+        }
+
+        .logo a{
+            font-size: 1.2rem;
+        }
+    }
+
+    .section1{
+        padding: 7rem;
+
+        .title-main{
+            top: -5%;
+
+            h1{
+                font-size: 2.5rem;
+            }
+
+            h2{
+                font-size: 1rem;
+            }
+
+            p{
+                font-size: 1.3rem;
+                padding-right: .1rem;
+                width: 35%;
+            }
+
+            a{
+                margin-top: 28rem;
+                font-size: 1.2rem;
+                width: 10rem;
+            }
+        }
+
+        #scene{
+
+            img{
+                width: 10%;
+                margin-top: -10rem;
+            }
+
+            img:nth-of-type(1){
+                margin-left: 47%;
+            }
+            img:nth-of-type(2){
+                margin-left: 53%;
+            }
+            img:nth-of-type(3){
+                margin-left: 58%;
+            }
+            img:nth-of-type(4){
+                margin-top: 4.8rem;
+                width: 32%;
+                margin-left:43%;
+            }
+        }
+    }
+
+    .section{
+
+        .flavor-section{
+                top: -20%;
+
+                h1{
+                    font-size: 2rem;
+                }
+
+                .calories{
+                    p{
+                        font-size: 1.1rem;
+                        width: 40%;
+                    }
+                }
+                .img{
+
+                    img{
+                        width: 30%;
+                    }
+
+                    .right{
+                        left: 65%;
+                        top: 5rem;
+                    }
+
+                    .left{
+                        left: 58%;
+                        top: 4rem;
+                    }
+
+                    .explore{
+                        top: 27rem;
+                        left: 3.5%;
+                        font-size: 1.1rem;
+                        width: 10rem;
+                    }
+                }
+                .item-info-flavor{
+                    top: 12rem;
+                    margin-left: 2.2rem;
+
+                    li{
+                        font-size: 1rem;
+                    }
+                }
+            }
+        }
+        #img_2 img{
+            width: 58%;
+            top: 5rem;
+            left: 38%;
+        }
+
+        #img_3 {
+            img{
+                width: 40%;
+                top: 10rem;
+                left: 52%;
+            }
+        }
+
+    .footer{
+
+        .contact{
+            padding: 4rem 2rem;
+            margin-top: -2rem;
+
+            h1{
+                font-size: 2.2rem;
+                margin: 0 0 3rem 0;
+            }
+
+            .info-contact{
+
+                p, 
+                a{
+                    font-size: 1rem;
+                    line-height: 1.5rem;
+                }
+            }
+            img{
+                width: 30%;
+                left: 55%;
+                top: 6rem;
+            }
+        }
+        .copyright{
+            font-size: .7rem;
+            margin-top: -1rem;
+        }
+    }
+    /*Items Page*/
+    .product{
+        
+        .product-landing{
+            flex-direction: row;
+            margin-top: 5rem;
+            img{
+                width: 25%;
+                margin-bottom: 2rem;
+            }
+            p{
+                font-size: 2rem;
+            }
+            ul{
+                position: relative;
+                top: 12rem;
+                left: -18rem;
+                align-items: flex-start;
+                li{
+                    line-height: 2.5rem;
+                    font-size: 1.5rem;
+                }
+            }
+        }
+
+        .product-info{
+            padding: 7rem 10rem 1rem 10rem;
+            flex-direction: row;
+            justify-content: space-around;
+
+            p{
+                font-size: 1.1rem;
+                line-height: 1.5rem;
+                width: 45%;
+            }
+        }
+        .product-ingridients{
+            padding: 0 10rem 3rem 10rem;
+
+            h1{
+                font-size: 1.2rem;
+            }
+
+            p{
+                font-size: 1rem;
+            }
+
+            ul{
+                li{
+                    font-size: .8rem;
+                }
+            }
+        }
+        .product-social{
+            width: 100%;
+
+            a{
+                padding: 1rem;
+                font-size: 1.1rem;
+            }
+
+        }
+    }
+
+    .next-products{
+        p{
+            font-size: 1.5rem;
+        }
+
+        .next-items{
+                width: 100%;
+                margin: -3rem 0 1rem 2rem;
+            a{
+                div{
+
+                    img{
+                        width: 30%;
+                    }
+                    p{
+                        font-size: 1.2rem;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+@media screen and (min-width: 1200px){
+
+    /*Items Page*/
+    .product{
+        
+        .product-landing{
+            flex-direction: row;
+            margin-top: 5rem;
+            position: relative;
+            left: -10rem;
+            img{
+                width: 20%;
+                margin-bottom: 2rem;
+                margin-top: -4rem;
+            }
+            p{
+                font-size: 1.5rem;
+                top: -4rem;
+            }
+            ul{
+                position: relative;
+                top: 7rem;
+                left: -13rem;
+                align-items: flex-start;
+                li{
+                    line-height: 1.8rem;
+                    font-size: 1.2rem;
+                }
+            }
+        }
+
+        .product-info{
+            padding: 7rem 10rem 1rem 10rem;
+            flex-direction: column;
+            justify-content: space-around;
+            position: relative;
+            left: 42%;
+            top: -15rem;
+
+            p{
+                font-size: 1.1rem;
+                line-height: 1.5rem;
+                width: 45%;
+            }
+        }
+        .product-ingridients{
+            position: relative;
+            left: -20%;
+            top: -25rem;
+            width: 60%;
+
+            h1{
+                font-size: 1.2rem;
+            }
+
+            p{
+                font-size: 1rem;
+            }
+
+            ul{
+                li{
+                    font-size: .8rem;
+                }
+            }
+        }
+        .product-social{
+            justify-content: space-between;
+            width: 28rem;
+            margin-top: -1rem;
+
+            a{
+                padding: .5rem;
+                font-size: 1rem;
+                margin-left: 1rem;
+                width: 10rem;
+            }
+
+        }
+    }
+
+    .next-products{
+        margin-top: -20rem;
+        p{
+            font-size: 1.5rem;
+        }
+
+        .next-items{
+            width: 100%;
+            margin: -3rem 0 1rem 2rem;
+            justify-content: center;
+            a{
+                div{
+
+                    img{
+                        width: 30%;
+                    }
+                    p{
+                        font-size: 1.2rem;
+                    }
+                }
+            }
+        }
+    }
+    
+}
+
+@media screen and (min-width: 1300px){
+/*Landing Page*/
+    .navbar{
+        padding: .5rem;
+
+        .nav-container{
+            
+            li a{
+                font-size: 1rem;
+            }
+        }
+
+        .logo a{
+            font-size: 1rem;
+        }
+    }
+
+    .section1{
+        padding: 7rem;
+
+        .title-main{
+            top: 3%;
+
+            h1{
+                font-size: 1.8rem;
+                letter-spacing: .1rem;
+                text-transform: uppercase;
+            }
+
+            h2{
+                font-size: 1rem;
+                margin: -.5rem 0 0 16rem;
+                text-transform: uppercase;
+            }
+
+            p{
+                font-size: 1.3rem;
+                padding-right: .1rem;
+                width: 30%;
+                margin-top: 2rem;
+            }
+
+            a{
+                margin-top: 20rem;
+                font-size: 1rem;
+                width: 8rem;
+                padding: .5rem 1rem;
+            }
+        }
+
+        #scene{
+
+            img{
+                width: 15%;
+                margin-top: -17.5rem;
+            }
+
+            img:nth-of-type(1){
+                margin-left: 47%;
+            }
+            img:nth-of-type(2){
+                margin-left: 56%;
+            }
+            img:nth-of-type(3){
+                margin-left: 64%;
+            }
+            img:nth-of-type(4){
+                margin-top: 4.8rem;
+                width: 44%;
+                margin-left:43%;
+            }
+        }
+    }
+
+    .section{
+
+        .flavor-section{
+                top: -10%;
+
+                h1{
+                    font-size: 1.8rem;
+                }
+
+                .calories{
+                    p{
+                        font-size: 1rem;
+                        width: 40%;
+                    }
+                }
+                .img{
+
+                    img{
+                        width: 25%;
+                    }
+
+                    .right{
+                        top: 1rem;
+                    }
+
+                    .left{
+                        top: 0rem;
+                    }
+
+                    .explore{
+                        top: 25rem;
+                        left: 3.5%;
+                        font-size: 1rem;
+                        width: 8rem;
+                        padding: .5rem 1rem;
+                    }
+                }
+                .item-info-flavor{
+                    top: 12rem;
+                    margin-left: 2rem;
+
+                    li{
+                        font-size: 1rem;
+                    }
+                }
+            }
+        }
+        #img_2 img{
+            width: 58%;
+            top: 0rem;
+            left: 38%;
+        }
+
+        #img_3 {
+            img{
+                width: 40%;
+                top: 5rem;
+                left: 52%;
+            }
+        }
+
+    .footer{
+ 
+        .contact{
+            padding: 1rem 10rem;
+            margin-top: 6rem;
+
+            h1{
+                font-size: 2.2rem;
+                margin: 0 0 3rem 0;
+            }
+
+            .info-contact{
+
+                p, 
+                a{
+                    font-size: 1rem;
+                    line-height: 1.5rem;
+                }
+            }
+            img{
+                width: 23%;
+                left: 55%;
+                top: 2rem;
+            }
+        }
+        .copyright{
+            font-size: .7rem;
+            margin-top: 1rem;
+            position: relative;
+            top: -10rem;
+            left: 1rem
+        }
+    }
+    /*Items Page*/
+    .product{
+        
+        .product-landing{
+
+            ul{
+                li{
+                    line-height: 1.5rem;
+                    font-size: 1rem;
+                }
+            }
+        }
+
+        .product-info{
+
+            p{
+                font-size: .8rem;
+                line-height: 1.2rem;
+                width: 45%;
+            }
+        }
+        .product-ingridients{
+            left: -20%;
+            top: -28rem;
+
+            h1{
+                font-size: .9rem;
+            }
+
+            p{
+                font-size: .5rem;
+            }
+
+            ul{
+                li{
+                    font-size: .6rem;
+                }
+            }
+        }
+        .product-social{
+
+            a{
+                padding: .5rem;
+                font-size: .7rem;
+                margin-left: 1rem;
+                width: max-content;
+            }
+
+        }
+    }
+
+    .next-products{
+        margin-top: -25rem;
+        p{
+            font-size: 1rem;
+        }
+
+        .next-items{
+            width: 100%;
+            margin: -3rem 0 1rem 2rem;
+            justify-content: center;
+            a{
+                div{
+
+                    img{
+                        width: 30%;
+                    }
+                    p{
+                        font-size: .7rem;
+                    }
+                }
+            }
+        }
+    }
+}
